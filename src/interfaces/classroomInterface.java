@@ -1,5 +1,5 @@
 package src.interfaces;
 
-public interface classroomInterface {
+public interface ClassroomInterface {
     
 }
