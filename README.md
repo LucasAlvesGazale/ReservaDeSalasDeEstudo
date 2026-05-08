@@ -1,9 +1,9 @@
 # ReservaDeSalasDeEstudo
 
 ## Autores
-Lucas Alves Gazale
-Daniel Monteiro Ribeiro
-Felipe Bagnatoru Rolim
+- Lucas Alves Gazale
+- Daniel Monteiro Ribeiro
+- Felipe Bagnatoru Rolim
 
 ## Instruções de uso
 
