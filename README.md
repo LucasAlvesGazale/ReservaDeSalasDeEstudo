@@ -3,7 +3,7 @@
 ## Autores
 - Lucas Alves Gazale
 - Daniel Monteiro Ribeiro
-- Felipe Bagnatoru Rolim
+- Felipe Bagnatori Rolim
 
 ## Instruções de uso
 
