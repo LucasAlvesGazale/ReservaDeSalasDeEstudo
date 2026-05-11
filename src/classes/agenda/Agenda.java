@@ -6,8 +6,9 @@ import java.util.List;
 
 import src.classes.reservation.Reservation;
 import src.observers.AgendaObserver;
+import src.observers.AgendaSubject;
 
-public class Agenda {
+public class Agenda implements AgendaSubject {
     private final List<AgendaObserver> observers = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
 
