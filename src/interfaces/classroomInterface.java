@@ -1,5 +1,3 @@
-package src.interfaces;
-
-public interface ClassroomInterface {
+public abstract class Classroom {
     
 }
