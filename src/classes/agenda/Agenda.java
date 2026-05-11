@@ -20,7 +20,7 @@ public class Agenda implements AgendaSubject {
         observers.remove(observer);
     }
 
-    private void notifyObservers(Reservation reservation) {
+    public void notifyObservers(Reservation reservation) {
         for (AgendaObserver observer : observers) {
             observer.update(reservation);
         }
