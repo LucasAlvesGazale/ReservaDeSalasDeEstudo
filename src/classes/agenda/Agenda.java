@@ -5,12 +5,23 @@ import java.util.Collections;
 import java.util.List;
 
 import src.classes.reservation.Reservation;
+import src.classes.user.User;
 import src.observers.AgendaObserver;
 import src.observers.AgendaSubject;
+import src.policies.ReservationPolicy;
 
 public class Agenda implements AgendaSubject {
     private final List<AgendaObserver> observers = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
+    private ReservationPolicy reservationPolicy;
+
+    public Agenda(ReservationPolicy reservationPolicy) {
+        this.reservationPolicy = reservationPolicy;
+    }
+
+    public void setReservationPolicy(ReservationPolicy reservationPolicy) {
+        this.reservationPolicy = reservationPolicy;
+    }
 
     public void addObserver(AgendaObserver observer) {
         observers.add(observer);
@@ -26,9 +37,9 @@ public class Agenda implements AgendaSubject {
         }
     }
 
-    public void addReservation(Reservation reservation) {
-        if (checkConflict(reservation)) {
-            throw new IllegalStateException("Reservation conflicts with an existing one: " + reservation);
+    public void addReservation(Reservation reservation, User requester) {
+        if (!reservationPolicy.validate(reservation, reservations, requester)) {
+            throw new IllegalStateException("Reservation rejected by policy: " + reservation);
         }
         reservations.add(reservation);
         notifyObservers(reservation);
