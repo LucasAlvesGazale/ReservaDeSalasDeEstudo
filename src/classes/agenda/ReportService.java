@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import src.classes.reservation.Reservation;
+import src.classes.reservation.*;
 import src.observers.AgendaObserver;
 
 public class ReportService implements AgendaObserver {
     private final List<Reservation> log = new ArrayList<>();
 
     @Override
-    public void update(Reservation reservation) {
-        log.add(reservation);
-        System.out.println("[ReportService] Logged reservation: " + reservation);
+    public void update(ReservationEvent event) {
+        log.add(event.getReservation());
+        System.out.println("[ReportService] Logged reservation: " + event.getReservation());
     }
 
     public void printReport() {
