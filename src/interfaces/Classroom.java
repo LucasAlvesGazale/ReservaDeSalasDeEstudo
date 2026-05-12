@@ -29,7 +29,7 @@ public abstract class Classroom {
 		this.capacity = capacity;
 	}
 
-	public void reserve() {
-		agenda.addReservation();
+	public void reserve(Reservation reservation, User requester) {
+		agenda.addReservation(reservation, requester);
 	}
 }

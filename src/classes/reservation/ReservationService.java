@@ -13,7 +13,7 @@ public class ReservationService {
 
     public void makeReservation(Classroom classroom, User user, DayOfWeek day, LocalTime startTime, LocalTime endTime) {
         Reservation newRes = new Reservation(day, startTime, endTime);
-        classroom.reserve(user, newRes);
+        classroom.reserve(newRes, user);
     }
 
 }
