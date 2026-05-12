@@ -1,5 +1,7 @@
 package src.classes.classrooms;
 
+import src.classes.reservation.Reservation;
+import src.classes.user.User;
 import src.classes.agenda.Agenda;
 import src.policies.FirstComeFirstServedPolicy;
 import src.policies.ReservationPolicy;
@@ -33,7 +35,15 @@ public abstract class Classroom {
 		this.capacity = capacity;
 	}
 
-	public void reserve() {
-		agenda.addReservation(null, null);
+	public void reserve(Reservation reservation, User requester) {
+		agenda.addReservation(reservation, requester);
+	}
+
+	public void cancelReservation(Reservation reservation) {
+		agenda.removeReservation(reservation);
+	}
+
+	public void modifyReservation(Reservation oldRes, Reservation newRes, User requester) {
+		agenda.updateReservation(oldRes, newRes, requester);
 	}
 }

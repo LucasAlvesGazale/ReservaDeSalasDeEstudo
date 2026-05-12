@@ -12,8 +12,21 @@ public class ReportService implements AgendaObserver {
 
     @Override
     public void update(ReservationEvent event) {
-        log.add(event.getReservation());
-        System.out.println("[ReportService] Logged reservation: " + event.getReservation());
+        switch (event.getType()) {
+            case CREATED:
+                log.add(event.getReservation());
+                System.out.println("[ReportService] Logged reservation: " + event.getReservation());
+                break;
+            case CANCELLED:
+                // No actions needed for cancellation in this simple log, but we could mark it as cancelled if we wanted.
+                System.out.println("[ReportService] Removed reservation from log: " + event.getReservation());
+                break;
+            case UPDATED:
+                // For simplicity, we just add the new reservation since it's just a log.
+                log.add(event.getReservation());
+                System.out.println("[ReportService] Updated reservation in log: " + event.getReservation());
+                break;
+        }
     }
 
     public void printReport() {
