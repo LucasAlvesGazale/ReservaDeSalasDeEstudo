@@ -1,9 +1,9 @@
 package src.observers;
 
-import src.classes.reservation.Reservation;
+import src.classes.reservation.ReservationEvent;
 
 public interface AgendaSubject {
     void addObserver(AgendaObserver observer);
     void removeObserver(AgendaObserver observer);
-    void notifyObservers(Reservation reservation);
+    void notifyObservers(ReservationEvent event);
 }

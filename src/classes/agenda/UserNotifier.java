@@ -1,6 +1,6 @@
 package src.classes.agenda;
 
-import src.classes.reservation.Reservation;
+import src.classes.reservation.*;
 import src.classes.user.User;
 import src.observers.AgendaObserver;
 
@@ -12,8 +12,32 @@ public class UserNotifier implements AgendaObserver {
     }
 
     @Override
-    public void update(Reservation reservation) {
+    public void update(ReservationEvent event) {
+        switch (event.getType()) {
+            case CREATED:
+                notifyCreation(event);
+                break;
+            case UPDATED:
+                notifyUpdate(event);
+                break;
+            case CANCELLED:
+                notifyCancellation(event);
+                break;
+        }
+    }
+
+    public void notifyCreation(ReservationEvent event) {
         System.out.println("Notification to " + user.getName() + 
-        ": reservation confirmed for " + reservation.toString());
+        ": reservation created for " + event.getReservation());
+    }
+
+    public void notifyUpdate(ReservationEvent event) {
+        System.out.println("Notification to " + user.getName() + 
+        ": reservation updated for " + event.getReservation());
+    }
+
+    public void notifyCancellation(ReservationEvent event) {
+        System.out.println("Notification to " + user.getName() + 
+        ": reservation cancelled for " + event.getReservation());
     }
 }
