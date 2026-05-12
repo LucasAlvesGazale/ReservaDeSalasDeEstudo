@@ -42,4 +42,8 @@ public abstract class Classroom {
 	public void cancelReservation(Reservation reservation) {
 		agenda.removeReservation(reservation);
 	}
+
+	public void modifyReservation(Reservation oldRes, Reservation newRes, User requester) {
+		agenda.updateReservation(oldRes, newRes, requester);
+	}
 }
