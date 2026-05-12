@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import src.classes.reservation.Reservation;
+import src.classes.reservation.ReservationEvent;
 import src.classes.user.User;
 import src.observers.AgendaObserver;
 import src.observers.AgendaSubject;
@@ -31,9 +32,9 @@ public class Agenda implements AgendaSubject {
         observers.remove(observer);
     }
 
-    public void notifyObservers(Reservation reservation) {
+    public void notifyObservers(ReservationEvent event) {
         for (AgendaObserver observer : observers) {
-            observer.update(reservation);
+            observer.update(event);
         }
     }
 
@@ -42,7 +43,7 @@ public class Agenda implements AgendaSubject {
             throw new IllegalStateException("Reservation rejected by policy: " + reservation);
         }
         reservations.add(reservation);
-        notifyObservers(reservation);
+        notifyObservers(new ReservationEvent(ReservationEventType.CREATED, reservation));
     }
 
     public boolean checkConflict(Reservation reservation) {
