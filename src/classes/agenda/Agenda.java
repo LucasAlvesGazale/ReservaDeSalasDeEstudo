@@ -31,9 +31,9 @@ public class Agenda implements AgendaSubject {
         observers.remove(observer);
     }
 
-    public void notifyObservers(Reservation reservation) {
+    public void notifyObservers(ReservationEvent event) {
         for (AgendaObserver observer : observers) {
-            observer.update(reservation);
+            observer.update(event);
         }
     }
 
@@ -42,12 +42,12 @@ public class Agenda implements AgendaSubject {
             throw new IllegalStateException("Reservation rejected by policy: " + reservation);
         }
         reservations.add(reservation);
-        notifyObservers(reservation);
+        notifyObservers(new ReservationEvent(reservation, EventType.CREATED));
     }
 
     public void removeReservation(Reservation reservation) {
         if (reservations.remove(reservation)) {
-            notifyObservers(reservation);
+            notifyObservers(new ReservationEvent(reservation, EventType.CANCELLED));
         } else {
             throw new IllegalArgumentException("Reservation not found: " + reservation);
         }
@@ -62,7 +62,7 @@ public class Agenda implements AgendaSubject {
         }
         reservations.remove(oldRes);
         reservations.add(newRes);
-        notifyObservers(newRes);
+        notifyObservers(new ReservationEvent(newRes, EventType.MODIFIED));
     }
 
     public boolean checkConflict(Reservation reservation) {
