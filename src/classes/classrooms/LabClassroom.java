@@ -1,7 +1,9 @@
 package src.classes.classrooms;
 
-import src.interfaces.Classroom;
-
 public class LabClassroom extends Classroom{
+
+    public LabClassroom(int id, int capacity) {
+        super(id, capacity);
+    }
     
 }

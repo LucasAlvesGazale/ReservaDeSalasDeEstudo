@@ -1,4 +1,8 @@
-package src.interfaces;
+package src.classes.classrooms;
+
+import src.classes.agenda.Agenda;
+import src.policies.FirstComeFirstServedPolicy;
+import src.policies.ReservationPolicy;
 
 public abstract class Classroom {
 	protected final int id;
@@ -30,6 +34,6 @@ public abstract class Classroom {
 	}
 
 	public void reserve() {
-		agenda.addReservation();
+		agenda.addReservation(null, null);
 	}
 }

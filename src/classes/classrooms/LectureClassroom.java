@@ -1,7 +1,9 @@
 package src.classes.classrooms;
 
-import src.interfaces.Classroom;
-
 public class LectureClassroom extends Classroom{
-    
+
+    public LectureClassroom(int id, int capacity) {
+        super(id, capacity);
+    }
+
 }
