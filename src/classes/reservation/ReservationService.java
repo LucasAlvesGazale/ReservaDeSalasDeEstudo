@@ -16,4 +16,12 @@ public class ReservationService {
         classroom.reserve(newRes, user);
     }
 
+    public void cancelReservation(Classroom classroom, Reservation reservation) {
+        classroom.cancel(reservation);
+    }
+
+    public void modifyReservation(Classroom classroom, Reservation oldRes, Reservation newRes, User user) {
+        classroom.modify(oldRes, newRes, user);
+    }
+
 }

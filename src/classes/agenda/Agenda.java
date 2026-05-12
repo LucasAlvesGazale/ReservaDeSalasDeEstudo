@@ -45,6 +45,26 @@ public class Agenda implements AgendaSubject {
         notifyObservers(reservation);
     }
 
+    public void removeReservation(Reservation reservation) {
+        if (reservations.remove(reservation)) {
+            notifyObservers(reservation);
+        } else {
+            throw new IllegalArgumentException("Reservation not found: " + reservation);
+        }
+    }
+
+    public void modiifyReservation(Reservation oldRes, Reservation newRes, User requester) {
+        if (!reservations.contains(oldRes)) {
+            throw new IllegalArgumentException("Original reservation not found: " + oldRes);
+        }
+        if (!reservationPolicy.validate(newRes, reservations, requester)) {
+            throw new IllegalStateException("New reservation rejected by policy: " + newRes);
+        }
+        reservations.remove(oldRes);
+        reservations.add(newRes);
+        notifyObservers(newRes);
+    }
+
     public boolean checkConflict(Reservation reservation) {
         for (Reservation existing : reservations) {
             if (existing.overlaps(reservation)) return true;

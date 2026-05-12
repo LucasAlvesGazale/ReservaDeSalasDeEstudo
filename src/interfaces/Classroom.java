@@ -32,4 +32,12 @@ public abstract class Classroom {
 	public void reserve(Reservation reservation, User requester) {
 		agenda.addReservation(reservation, requester);
 	}
+
+    public void cancel(Reservation reservation) {
+        agenda.removeReservation(reservation);
+    }
+
+    public void modify(Reservation oldRes, Reservation newRes, User requester) {
+        agenda.modifyReservation(oldRes, newRes, requester);
+    }
 }
