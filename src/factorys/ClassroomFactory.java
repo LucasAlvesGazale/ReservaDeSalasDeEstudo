@@ -3,14 +3,14 @@ package src.factorys;
 import src.classes.classrooms.LabClassroom;
 import src.classes.classrooms.LectureClassroom;
 import src.classes.classrooms.StudyClassroom;
-import src.interfaces.ClassroomInterface;
+import src.interfaces.Classroom;
 
 public class ClassroomFactory {
     public enum ClassType{
         LAB, STUDY, LECTURE
     }
 
-    public static ClassroomInterface create(ClassType type){
+    public static Classroom create(ClassType type){
         switch (type){
             case LECTURE: return new LectureClassroom();
             case STUDY: return new StudyClassroom();
