@@ -1,7 +1,7 @@
 package src.classes.classrooms;
 
-import src.interfaces.ClassroomInterface;
+import src.interfaces.Classroom;
 
-public class LabClassroom implements ClassroomInterface{
+public class LabClassroom extends Classroom{
     
 }
