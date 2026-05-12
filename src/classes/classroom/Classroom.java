@@ -1,4 +1,9 @@
-package src.interfaces;
+package src.classes.classroom;
+
+import src.classes.agenda.Agenda;
+import src.classes.user.User;
+import src.classes.reservation.Reservation;
+import src.policies.*;
 
 public abstract class Classroom {
 	protected final int id;
@@ -29,7 +34,7 @@ public abstract class Classroom {
 		this.capacity = capacity;
 	}
 
-	public void reserve() {
-		agenda.addReservation();
+	public void reserve(Reservation reservation, User requester) {
+		agenda.addReservation(reservation, requester);
 	}
 }
