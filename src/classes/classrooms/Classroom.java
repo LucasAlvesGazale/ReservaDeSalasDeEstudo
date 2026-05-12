@@ -38,4 +38,8 @@ public abstract class Classroom {
 	public void reserve(Reservation reservation, User requester) {
 		agenda.addReservation(reservation, requester);
 	}
+
+	public void cancelReservation(Reservation reservation) {
+		agenda.removeReservation(reservation);
+	}
 }

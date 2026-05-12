@@ -46,6 +46,12 @@ public class Agenda implements AgendaSubject {
         reservations.add(reservation);
         notifyObservers(new ReservationEvent(ReservationEventType.CREATED, reservation));
     }
+    
+    public void removeReservation(Reservation reservation) {
+        if (reservations.remove(reservation)) {
+            notifyObservers(new ReservationEvent(ReservationEventType.CANCELLED, reservation));
+        }
+    }
 
     public boolean checkConflict(Reservation reservation) {
         for (Reservation existing : reservations) {
