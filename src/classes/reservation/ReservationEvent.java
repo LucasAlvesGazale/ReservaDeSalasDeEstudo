@@ -1,9 +1,5 @@
 package src.classes.reservation;
 
-enum ReservationEventType {
-    CREATED, MODIFIED, CANCELLED
-}
-
 public class ReservationEvent {
     private final ReservationEventType type;
     private final Reservation reservation;

@@ -6,6 +6,7 @@ import java.util.List;
 
 import src.classes.reservation.Reservation;
 import src.classes.reservation.ReservationEvent;
+import src.classes.reservation.ReservationEventType;
 import src.classes.user.User;
 import src.observers.AgendaObserver;
 import src.observers.AgendaSubject;
