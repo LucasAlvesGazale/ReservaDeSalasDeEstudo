@@ -1,8 +1,11 @@
 package src.classes.classrooms;
 
+import java.util.List;
+
 import src.classes.reservation.Reservation;
 import src.classes.user.User;
 import src.classes.agenda.Agenda;
+import src.observers.AgendaObserver;
 import src.policies.FirstComeFirstServedPolicy;
 import src.policies.ReservationPolicy;
 
@@ -45,5 +48,21 @@ public abstract class Classroom {
 
 	public void modifyReservation(Reservation oldRes, Reservation newRes, User requester) {
 		agenda.updateReservation(oldRes, newRes, requester);
+	}
+
+	public void addObserver(AgendaObserver observer) {
+		agenda.addObserver(observer);
+	}
+
+	public void removeObserver(AgendaObserver observer) {
+		agenda.removeObserver(observer);
+	}
+
+	public List<Reservation> getReservations() {
+		return agenda.getReservations();
+	}
+
+	public void setReservationPolicy(ReservationPolicy policy) {
+		agenda.setReservationPolicy(policy);
 	}
 }
